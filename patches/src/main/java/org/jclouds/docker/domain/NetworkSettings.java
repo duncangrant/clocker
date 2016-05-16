@@ -70,7 +70,7 @@ public abstract class NetworkSettings {
 
    public abstract int linkLocalIPv6PrefixLen();
 
-   public abstract Map<String, Object> ports();
+   public abstract Map<String, List<Map<String, String>>> ports();
 
    @Nullable public abstract String sandboxKey();
 
@@ -107,7 +107,7 @@ public abstract class NetworkSettings {
            "GlobalIPv6PrefixLen", "IPAddress", "IPPrefixLen", "IPv6Gateway",
            "MacAddress", "Networks", "PortMapping" })
    public static NetworkSettings create(String bridge, String sandboxId, boolean hairpinMode, String linkLocalIPv6Address,
-                                        int linkLocalIPv6PrefixLen, Map<String, Object> ports, String sandboxKey, List<String> secondaryIPAddresses,
+                                        int linkLocalIPv6PrefixLen, Map<String, List<Map<String, String>>> ports, String sandboxKey, List<String> secondaryIPAddresses,
                                         List<String> secondaryIPv6Addresses, String endpointId, String gateway, String globalIPv6Address,
                                         int globalIPv6PrefixLen, String ipAddress, int ipPrefixLen, String ipv6Gateway,
                                         String macAddress, Map<String, Details> networks, String portMapping) {
@@ -134,7 +134,7 @@ public abstract class NetworkSettings {
       private String gateway;
       private String bridge;
       private String portMapping;
-      private Map<String, Object> ports = Maps.newLinkedHashMap();
+      private Map<String, List<Map<String, String>>> ports = Maps.newLinkedHashMap();
       private String sandboxId;
       private boolean hairpinMode;
       private String linkLocalIPv6Address;
@@ -174,7 +174,7 @@ public abstract class NetworkSettings {
          return this;
       }
 
-      public Builder ports(Map<String, Object> ports) {
+      public Builder ports(Map<String, List<Map<String, String>>> ports) {
          this.ports = ports;
          return this;
       }
