@@ -18,7 +18,6 @@ package org.jclouds.docker.compute.strategy;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 import static com.google.common.collect.Iterables.find;
-
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -151,7 +150,7 @@ public class DockerComputeServiceAdapter implements
 
       containerConfigBuilder.image(imageId);
 
-      // add the inbound ports into exposed ports
+      // add the inbound ports into exposed ports map
       Config containerConfig = containerConfigBuilder.build();
       Map<String, Object> exposedPorts = Maps.newHashMap();
       if (containerConfig.exposedPorts() == null) {
